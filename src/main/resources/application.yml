@@ -1,6 +1,7 @@
-server:
-  port: 8082
 spring:
+  profiles:
+    active: @springProfile@
+
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://35.247.133.74:3306/test
