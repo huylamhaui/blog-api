@@ -6,4 +6,4 @@ COPY . .
 
 RUN mvn clean
 
-ENTRYPOINT ["mvn","spring-boot:","run","-P","prod"]
+ENTRYPOINT ["mvn","spring-boot:run","-P","prod"]
