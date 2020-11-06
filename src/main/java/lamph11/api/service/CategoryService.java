@@ -40,10 +40,15 @@ public class CategoryService {
 
 
     public CreateCategoryResponse create(CreateCategoryRequest request) throws BaseException {
+        Long parentId = request.getParentId();
+        Category parent = null;
+        if (Objects.nonNull(parentId))
+            parent = findById(request.getParentId());
+
         Category category = new Category()
                 .setName(request.getName())
                 .setDescription(request.getDescription())
-                .setParent(findById(request.getParentId()));
+                .setParent(parent);
         categoryRepository.save(category);
 
         CreateCategoryResponse response = new CreateCategoryResponse();
