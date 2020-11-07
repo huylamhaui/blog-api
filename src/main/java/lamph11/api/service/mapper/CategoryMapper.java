@@ -8,5 +8,7 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface CategoryMapper extends BaseMapper<Category, CategoryDTO> {
 
-
+    @Mapping(source = "parent.id", target = "parentId")
+    @Override
+    CategoryDTO toDTO(Category category);
 }

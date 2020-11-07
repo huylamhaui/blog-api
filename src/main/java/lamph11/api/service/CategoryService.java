@@ -44,10 +44,13 @@ public class CategoryService {
         Category parent = null;
         if (Objects.nonNull(parentId))
             parent = findById(request.getParentId());
-
+        if (Objects.nonNull(parent))
+            parent.setTotalChildren(parent.getTotalChildren() + 1);
         Category category = new Category()
                 .setName(request.getName())
                 .setDescription(request.getDescription())
+                .setTotalChildren(0)
+                .setLevel(parent == null ? 0 : parent.getLevel() + 1)
                 .setParent(parent);
         categoryRepository.save(category);
 

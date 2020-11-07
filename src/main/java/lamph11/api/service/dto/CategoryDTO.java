@@ -8,5 +8,7 @@ public class CategoryDTO {
     private Long id;
     private String name;
     private String description;
+    private Integer level;
+    private Integer totalChildren;
     private Long parentId;
 }
